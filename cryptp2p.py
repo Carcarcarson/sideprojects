@@ -1,6 +1,8 @@
 """
 Carson Harmon
 harmon35@purdue.edu
+Python 2.7.6 
+
 p2p attempt 2 lmao
 """
 
@@ -9,13 +11,14 @@ p2p attempt 2 lmao
 import threading 
 import sys
 import socket
+import time
 
 #Server object
 class Server(threading.Thread):
 	def __init__(self):
 		threading.Thread.__init__(self)
 		self.port = 1337 
-		self.ip = "192.168.1.9"
+		self.ip = "192.168.1.24"
 		self.size = 1024
 		self.server = None
 
@@ -69,5 +72,5 @@ class Client(threading.Thread):
 if __name__ == "__main__":
 	s = Server()
 	c = Client()
-	c.conn()
-	s.run()
+	threading.Thread(target = c.conn).start()
+	threading.Thread(target = s.run).start()
