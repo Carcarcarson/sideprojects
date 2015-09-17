@@ -31,7 +31,7 @@ class Server(threading.Thread):
 		except socket.error, (value,message):
 			if self.server:
 				self.server.close()
-			print "u failed m8 g3t r3kt m8 gr8 job m8 l8er m8"
+			print "Failed to create socket object, check your IPaddr"
 			sys.exit(1)
 	
 	def run(self):
@@ -72,5 +72,5 @@ class Client(threading.Thread):
 if __name__ == "__main__":
 	s = Server()
 	c = Client()
-	threading.Thread(target = c.conn).start()
+	#threading.Thread(target = c.conn).start()
 	threading.Thread(target = s.run).start()
