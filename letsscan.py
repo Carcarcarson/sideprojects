@@ -1,5 +1,4 @@
-#scanner
-#python 2.7.6 
+#!/usr/bin/python
 #Carson Harmon, harmon35@purdue.edu 
 #lets make a web scanner that will scan a specific host to see what ports are open. 
 #caveat, have to have IP in your arp table (arp -n) linux. 
@@ -8,9 +7,17 @@
 """
 Objective, create user friendly, somewhat simple, network scanner. 
 DONE give option to choose ports and IP's 
-give option to ARP the network--------------------------------------instead we should try and arp probe of target IP and if fail report failure and quit.
-DONE Better user feedback 
-Port to andriod
+DONE give option to ARP the network--------------------------------------instead we should try and arp probe of target IP and if fail report failure and quit.
+DONE Better user feedback
+
+If you want to use it in any directory throw it into your path. 
+it's rllybuggy tho cant get it to work, will try later. 
+#!/usr/bin/python
+export PATH=/my/directory/with/pythonscript:$PATH
+
+
+
+Build gui copy
 """
 
 
@@ -91,11 +98,10 @@ def main():
 	#PORTS = [22, 80]
 	PORTS = args.p
 	PORTS = ast.literal_eval(PORTS)
-	
 	s = ScanShit(IP_ADDR, PORTS)
 	s.RunRoot()
 	# s.getarp()
-	if s.getarp() == 8:
+	if s.getarp() == 8: #redundant 
 		s.Scan()
 if __name__ == '__main__':
 	main()
